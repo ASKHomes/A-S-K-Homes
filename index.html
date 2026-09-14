@@ -3,194 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A S K Homes | Login</title>
     
-    <!-- SEO Titles, Descriptions & Keywords -->
-    <title>A S K Homes | Best Unisex PG & Hostel in Kochi</title>
-    <meta name="description" content="Looking for the best unisex PG in Kochi? A S K Homes offers safe, comfortable, and affordable hostel stays with food, Wi-Fi, and modern amenities.">
-    <meta name="keywords" content="askhomes, A S K Homes, best pg in kochi, unisex pg kochi, best hostel in kochi, gents pg, ladies pg, kochi hostel accommodation, safe stay kochi">
-    <meta name="author" content="A S K Homes">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-blue: #1c3b6e;
-            --light-bg: #f8f9fc;
-            --text-dark: #333;
-            --text-muted: #777;
-            --card-admin: #eef4ff;
-            --card-student: #eefaf2;
-            --border-color: #e0e5ed;
+            --bg-dark: #121212;
+            --form-bg: #1a1a1a;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --input-bg: #222222;
+            --border-color: #333333;
+            --gradient-btn: linear-gradient(90deg, #ff7033 0%, #b53cff 100%);
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: #e0e5ed;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
         }
-
-        /* Mobile App Container */
-        .app-container {
-            width: 100%;
-            max-width: 420px;
-            height: 850px;
-            background-color: #ffffff;
-            border-radius: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            overflow-y: auto; /* Scrollable for dashboard */
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Hide scrollbar for clean app look */
-        .app-container::-webkit-scrollbar { width: 0px; }
 
         .hidden { display: none !important; }
 
-        /* --- SCREEN 1: LOGIN UI --- */
-        .header-image {
-            position: relative;
-            height: 250px;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&q=80&w=400') center/cover;
-            border-bottom-left-radius: 50% 20%;
-            border-bottom-right-radius: 50% 20%;
-            padding: 25px;
-            color: white;
+        /* ================= LOGIN SCREEN (DARK UI) ================= */
+        #login-screen {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
         }
 
-        .header-text { font-family: 'Caveat', cursive; font-size: 28px; line-height: 1.2; margin-top: 40px; }
-        .logo-section { text-align: center; margin-top: -30px; position: relative; z-index: 10; }
-        .logo-icon { width: 60px; height: 60px; background-color: var(--primary-blue); border-radius: 12px; display: inline-flex; justify-content: center; align-items: center; color: white; border: 4px solid white; }
-        .logo-title { color: var(--primary-blue); font-size: 24px; font-weight: 700; margin: 10px 0 5px 0; }
-        .logo-subtitle { color: var(--text-muted); font-size: 13px; margin: 0; }
+        .login-left {
+            flex: 1;
+            padding: 40px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+        }
 
-        .login-content { padding: 25px; flex-grow: 1; }
-        .login-content h2 { margin: 0 0 5px 0; font-size: 20px; color: var(--text-dark); }
-        .login-content p { margin: 0 0 20px 0; font-size: 13px; color: var(--text-muted); }
+        .login-right {
+            flex: 1;
+            /* Placeholder for the hand/phone image */
+            background: radial-gradient(circle at center, #3a1525 0%, #0a0a0a 70%), url('https://images.unsplash.com/photo-1616077168712-fc6c788db4af?auto=format&fit=crop&q=80') center/cover;
+            background-blend-mode: overlay;
+            display: none; /* Hidden on mobile */
+        }
 
-        .input-group { position: relative; margin-bottom: 15px; }
-        .input-group svg { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; fill: none; stroke: var(--text-muted); stroke-width: 2; }
-        .input-group input { width: 100%; padding: 15px 15px 15px 45px; border: 1px solid var(--border-color); border-radius: 12px; box-sizing: border-box; font-size: 14px; outline: none; transition: 0.3s; }
-        .input-group input:focus { border-color: var(--primary-blue); }
+        @media (min-width: 900px) {
+            .login-right { display: block; }
+        }
 
-        .btn-primary { width: 100%; background-color: var(--primary-blue); color: white; border: none; padding: 15px; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px;}
-        
-        .footer-link { text-align: center; margin-top: 25px; font-size: 13px; color: var(--text-muted); }
-        .footer-link a { color: var(--primary-blue); font-weight: 600; text-decoration: none; cursor: pointer; }
+        .login-left h1 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
 
-        /* --- SCREEN 2: ROLE SELECTION --- */
-        #role-screen { padding: 40px 25px; height: 100%; background: linear-gradient(180deg, #ffffff 0%, #f4f7fb 100%); box-sizing: border-box; }
-        .role-card { border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 15px; margin-bottom: 20px; cursor: pointer; border: 1px solid transparent; transition: 0.3s; }
-        .card-admin { background-color: var(--card-admin); }
-        .card-student { background-color: var(--card-student); }
-        .role-icon-box { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
-        .card-admin .role-icon-box { background-color: #d1e2ff; color: #1c3b6e; }
-        .card-student .role-icon-box { background-color: #d1f0db; color: #1e7041; }
-        .role-text h3 { margin: 0 0 5px 0; font-size: 16px; color: var(--text-dark); }
-        .role-text p { margin: 0; font-size: 12px; color: var(--text-muted); line-height: 1.4; }
-        .back-link { text-align: center; display: block; margin-top: 20px; color: var(--primary-blue); font-weight: 600; font-size: 14px; cursor: pointer; }
+        .login-left p.subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
 
-        /* --- SCREEN 3: ADMIN DASHBOARD --- */
-        #dashboard-screen { padding: 25px; background: #f8f9fc; min-height: 100%; box-sizing: border-box; }
-        .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .dash-header h2 { margin: 0; font-size: 18px; color: var(--primary-blue); }
-        .btn-logout { background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: bold; }
-        
-        .form-card { background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .form-card h3 { margin: 0 0 15px 0; font-size: 15px; color: var(--text-dark); }
-        .form-card input, .form-card select { width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid var(--border-color); border-radius: 8px; box-sizing: border-box; font-size: 13px; }
-        .btn-success { width: 100%; background: #28a745; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; }
-        
-        .table-container { background: white; padding: 15px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
-        th { padding: 10px; border-bottom: 2px solid var(--border-color); color: var(--text-muted); }
-        td { padding: 10px; border-bottom: 1px solid var(--border-color); color: var(--text-dark); }
+        .social-login {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn-social {
+            flex: 1;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 12px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn-social:hover {
+            background: var(--input-bg);
+        }
+
+        .btn-social img {
+            width: 18px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-bottom: 30px;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .divider::before { margin-right: 15px; }
+        .divider::after { margin-left: 15px; }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px 20px;
+            background: var(--input-bg);
+            border: 1px solid transparent;
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 14px;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #ff7033;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            margin-bottom: 30px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+        }
+
+        .forgot-password {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            width: 100%;
+            background: var(--gradient-btn);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+            margin-bottom: 25px;
+        }
+
+        .register-link {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .register-link a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-links {
+            position: absolute;
+            bottom: 30px;
+            left: 80px;
+            right: 80px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* ================= DASHBOARD UI (Basic Light Theme for Admin) ================= */
+        #dashboard-screen {
+            width: 100%;
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            color: #333;
+            border-radius: 12px;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px;}
+        .btn-logout { background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; }
+        .form-card { background: #f8f9fc; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+        .form-card input, .form-card select { width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
+        .btn-success { background: #28a745; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; width: 100%;}
+        table { width: 100%; border-collapse: collapse; margin-top: 20px;}
+        th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
+        th { background: #f1f1f1; }
     </style>
 </head>
 <body>
 
-<div class="app-container">
-    
     <!-- ================= 1. LOGIN SCREEN ================= -->
     <div id="login-screen">
-        <div class="header-image">
-            <div class="header-text">Stay Safe<br>Stay Home<br>Feel at Home</div>
-        </div>
+        <div class="login-left">
+            <h1>Login to Your Account</h1>
+            <p class="subtitle">A S K Homes Management</p>
 
-        <div class="logo-section">
-            <div class="logo-icon">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M9 22V12h6v10"></path></svg>
-            </div>
-            <h1 class="logo-title">A S K Homes</h1>
-            <p class="logo-subtitle">Hostel Management Made Simple</p>
-        </div>
-
-        <div class="login-content">
-            <h2>Admin Login</h2>
-            <p>Access your dashboard to continue</p>
-
-            <div class="input-group">
-                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                <input type="email" id="login-email" placeholder="Admin Email">
+            <div class="social-login">
+                <button class="btn-social" type="button">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+                    Login With Google
+                </button>
+                <button class="btn-social" type="button">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" style="filter: invert(1);" alt="Apple">
+                    Login With Apple
+                </button>
             </div>
 
+            <div class="divider">OR</div>
+
             <div class="input-group">
-                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <input type="email" id="login-email" placeholder="User Name or Email">
+            </div>
+
+            <div class="input-group">
                 <input type="password" id="login-password" placeholder="Password">
             </div>
 
-            <button id="login-btn" class="btn-primary">Login &rarr;</button>
-
-            <div class="footer-link">
-                View other login options? <a id="go-to-role">Click Here &gt;</a>
+            <div class="form-options">
+                <label class="remember-me">
+                    <input type="checkbox"> Remember Me
+                </label>
+                <a href="#" class="forgot-password">Forgot Password?</a>
             </div>
+
+            <button id="login-btn" class="btn-primary">Login to Your Account</button>
+
+            <div class="register-link">
+                Not a member yet? <a href="#">Register Now</a>
+            </div>
+
+            <div class="footer-links">
+                <span>Privacy Policy</span>
+                <span>Copyright 2026</span>
+            </div>
+        </div>
+        <div class="login-right">
+            <!-- Background handled in CSS -->
         </div>
     </div>
 
-    <!-- ================= 2. ROLE SELECTION SCREEN ================= -->
-    <div id="role-screen" class="hidden">
-        <div class="logo-section" style="margin-top: 20px; margin-bottom: 40px;">
-            <div class="logo-icon">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M9 22V12h6v10"></path></svg>
-            </div>
-            <h1 class="logo-title">A S K Homes</h1>
-            <p class="logo-subtitle">Choose how you want to login</p>
-        </div>
-
-        <div class="role-card card-admin" id="go-to-login">
-            <div class="role-icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></div>
-            <div class="role-text">
-                <h3>Admin / Owner</h3>
-                <p>Manage residents, rooms, rent and overall operations.</p>
-            </div>
-        </div>
-
-        <div class="role-card card-student" onclick="alert('Student Dashboard Coming Soon!')">
-            <div class="role-icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg></div>
-            <div class="role-text">
-                <h3>Student / Resident</h3>
-                <p>View your room details, rent status and check-in info.</p>
-            </div>
-        </div>
-
-        <a class="back-link" id="back-to-login-btn">&larr; Back to Login</a>
-    </div>
-
-    <!-- ================= 3. ADMIN DASHBOARD SCREEN ================= -->
+    <!-- ================= 2. ADMIN DASHBOARD SCREEN ================= -->
     <div id="dashboard-screen" class="hidden">
         <div class="dash-header">
-            <h2>Admin Panel</h2>
+            <h2>A S K Homes - Admin Panel</h2>
             <button id="logout-btn" class="btn-logout">Logout</button>
         </div>
 
-        <!-- Add Resident Form -->
         <div class="form-card">
             <h3>Add New Resident</h3>
             <input type="text" id="new-name" placeholder="Full Name" required>
@@ -203,13 +296,13 @@
             <button id="add-resident-btn" class="btn-success">Save Resident</button>
         </div>
 
-        <!-- Residents Table -->
-        <div class="table-container">
+        <div>
             <h3>Current Residents</h3>
             <table>
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Phone</th>
                         <th>Room</th>
                         <th>Food</th>
                     </tr>
@@ -221,129 +314,113 @@
         </div>
     </div>
 
-</div>
+    <!-- ================= FIREBASE LOGIC ================= -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+        import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
-<!-- ================= FIREBASE & JS LOGIC ================= -->
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
-    import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+        // REPLACE THESE WITH YOUR ACTUAL FIREBASE CONFIG
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
 
-    // REPLACE THESE KEYS WITH YOUR ACTUAL FIREBASE CONFIG
-    const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_PROJECT.firebaseapp.com",
-        projectId: "YOUR_PROJECT_ID",
-        storageBucket: "YOUR_PROJECT.appspot.com",
-        messagingSenderId: "YOUR_SENDER_ID",
-        appId: "YOUR_APP_ID"
-    };
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
+        const loginScreen = document.getElementById('login-screen');
+        const dashboardScreen = document.getElementById('dashboard-screen');
+        const residentList = document.getElementById('resident-list');
 
-    // Screen Elements
-    const loginScreen = document.getElementById('login-screen');
-    const roleScreen = document.getElementById('role-screen');
-    const dashboardScreen = document.getElementById('dashboard-screen');
-    const residentList = document.getElementById('resident-list');
+        // Auth State
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                loginScreen.classList.add('hidden');
+                document.body.style.backgroundColor = "#f4f4f9"; // Light bg for dashboard
+                dashboardScreen.classList.remove('hidden');
+                fetchResidents(); 
+            } else {
+                document.body.style.backgroundColor = "#121212"; // Dark bg for login
+                dashboardScreen.classList.add('hidden');
+                loginScreen.classList.remove('hidden');
+            }
+        });
 
-    // UI Navigation
-    document.getElementById('go-to-role').addEventListener('click', () => {
-        loginScreen.classList.add('hidden'); roleScreen.classList.remove('hidden');
-    });
-    document.getElementById('go-to-login').addEventListener('click', () => {
-        roleScreen.classList.add('hidden'); loginScreen.classList.remove('hidden');
-    });
-    document.getElementById('back-to-login-btn').addEventListener('click', () => {
-        roleScreen.classList.add('hidden'); loginScreen.classList.remove('hidden');
-    });
-
-    // Firebase Auth State Listener
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            loginScreen.classList.add('hidden');
-            roleScreen.classList.add('hidden');
-            dashboardScreen.classList.remove('hidden');
-            fetchResidents(); // Load data on successful login
-        } else {
-            dashboardScreen.classList.add('hidden');
-            loginScreen.classList.remove('hidden');
-        }
-    });
-
-    // Login Action
-    document.getElementById('login-btn').addEventListener('click', () => {
-        const email = document.getElementById('login-email').value;
-        const password = document.getElementById('login-password').value;
-        if(!email || !password) return alert("Enter email and password!");
-        
-        signInWithEmailAndPassword(auth, email, password)
-            .catch(error => alert("Login Failed: " + error.message));
-    });
-
-    // Logout Action
-    document.getElementById('logout-btn').addEventListener('click', () => signOut(auth));
-
-    // Add Resident Action
-    document.getElementById('add-resident-btn').addEventListener('click', async () => {
-        const name = document.getElementById('new-name').value;
-        const phone = document.getElementById('new-phone').value;
-        const room = document.getElementById('new-room').value;
-        const food = document.getElementById('new-food').value;
-
-        if(!name || !phone || !room) return alert("Please fill all fields!");
-
-        document.getElementById('add-resident-btn').innerText = "Saving...";
-
-        try {
-            await addDoc(collection(db, "residents"), {
-                name: name,
-                phone: phone,
-                room_id: room,
-                food_preference: food,
-                check_in_date: new Date().toISOString().split('T')[0]
-            });
-            alert("Resident Added!");
+        // Login
+        document.getElementById('login-btn').addEventListener('click', () => {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            if(!email || !password) return alert("Enter email and password!");
             
-            // Clear fields
-            document.getElementById('new-name').value = '';
-            document.getElementById('new-phone').value = '';
-            document.getElementById('new-room').value = '';
-            document.getElementById('add-resident-btn').innerText = "Save Resident";
-            
-            fetchResidents(); // Refresh UI table
-        } catch (error) {
-            console.error(error);
-            alert("Error saving resident.");
-            document.getElementById('add-resident-btn').innerText = "Save Resident";
-        }
-    });
+            signInWithEmailAndPassword(auth, email, password)
+                .catch(error => alert("Login Failed: " + error.message));
+        });
 
-    // Fetch Data for Table
-    async function fetchResidents() {
-        residentList.innerHTML = "<tr><td colspan='3'>Loading data...</td></tr>";
-        try {
-            const querySnapshot = await getDocs(collection(db, "residents"));
-            residentList.innerHTML = ""; 
-            
-            querySnapshot.forEach((doc) => {
-                const data = doc.data();
-                const isFood = data.food_preference === 'with_food' ? 'Yes' : 'No';
-                const row = `<tr>
-                    <td><strong>${data.name}</strong><br><small style="color:#777;">${data.phone}</small></td>
-                    <td>${data.room_id}</td>
-                    <td><span style="background:${isFood==='Yes'?'#d1f0db':'#f8d7da'}; padding:3px 8px; border-radius:10px; font-size:11px; color:${isFood==='Yes'?'#1e7041':'#721c24'};">${isFood}</span></td>
-                </tr>`;
-                residentList.innerHTML += row;
-            });
-        } catch (error) {
-            console.error("Error fetching data: ", error);
-            residentList.innerHTML = "<tr><td colspan='3'>Failed to load data.</td></tr>";
-        }
-    }
-</script>
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', () => signOut(auth));
 
+        // Add Resident
+        document.getElementById('add-resident-btn').addEventListener('click', async () => {
+            const name = document.getElementById('new-name').value;
+            const phone = document.getElementById('new-phone').value;
+            const room = document.getElementById('new-room').value;
+            const food = document.getElementById('new-food').value;
+
+            if(!name || !phone || !room) return alert("Please fill all fields!");
+            document.getElementById('add-resident-btn').innerText = "Saving...";
+
+            try {
+                await addDoc(collection(db, "residents"), {
+                    name: name,
+                    phone: phone,
+                    room_id: room,
+                    food_preference: food,
+                    check_in_date: new Date().toISOString().split('T')[0]
+                });
+                alert("Resident Added!");
+                
+                document.getElementById('new-name').value = '';
+                document.getElementById('new-phone').value = '';
+                document.getElementById('new-room').value = '';
+                document.getElementById('add-resident-btn').innerText = "Save Resident";
+                
+                fetchResidents();
+            } catch (error) {
+                console.error(error);
+                alert("Error saving resident.");
+                document.getElementById('add-resident-btn').innerText = "Save Resident";
+            }
+        });
+
+        // Fetch Residents
+        async function fetchResidents() {
+            residentList.innerHTML = "<tr><td colspan='4'>Loading data...</td></tr>";
+            try {
+                const querySnapshot = await getDocs(collection(db, "residents"));
+                residentList.innerHTML = ""; 
+                
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const isFood = data.food_preference === 'with_food' ? 'Yes' : 'No';
+                    const row = `<tr>
+                        <td><strong>${data.name}</strong></td>
+                        <td>${data.phone}</td>
+                        <td>${data.room_id}</td>
+                        <td>${isFood}</td>
+                    </tr>`;
+                    residentList.innerHTML += row;
+                });
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+                residentList.innerHTML = "<tr><td colspan='4'>Failed to load data.</td></tr>";
+            }
+        }
+    </script>
 </body>
 </html>
